@@ -52,6 +52,7 @@ export default function RegisterPage() {
       setErrMsg("Make sure fill all required fields!");
       await handleOpenAlert(1);
     }
+    setIsLoading(true);
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
