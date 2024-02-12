@@ -12,7 +12,7 @@ export default function RegisterPage() {
     "Herhangi bir error uzadikca uzar"
   );
   const isInvalidFullName = React.useMemo(() => {
-    let regex = /[aA-zZ0-9]/;
+    let regex = /[aA-zZ]/;
     if (fullName === "") return false;
     if (fullName.length < 3 || fullName.length > 50) return true;
     return fullName.match(regex) ? false : true;
@@ -46,9 +46,11 @@ export default function RegisterPage() {
   };
 
   const handleRegister = async () => {
+    console.log('burda')
+    setError(0);
     if (isInvalidEmail || isInvalidFullName || isInvalidPassword) {
       setErrMsg("Make sure fill all required fields!");
-      handleOpenAlert(1);
+      await handleOpenAlert(1);
     }
     const res = await fetch("/api/auth/register", {
       method: "POST",
@@ -60,13 +62,15 @@ export default function RegisterPage() {
       }),
     });
     const data = await res.json();
-    console.log(data)
-    console.log('link:'+``)
+    console.log(data);
     setErrMsg(data.message);
     if (!data.ok) {
-      setError(1);
+      console.log('hata')
+      await handleOpenAlert(1);
     } else {
-      setError(2);
+      console.log('hata degil')
+      await handleOpenAlert(2);
+      console.log("link:" + `http://localhost:3000/${data.data._id}`);
     }
     setIsLoading(false);
   };
@@ -79,7 +83,7 @@ export default function RegisterPage() {
             error === 1
               ? "translate-y-0 bg-red-500"
               : error === 2
-              ? "-translate-y-10 bg-green-500"
+              ? "translate-y-0 bg-green-500"
               : "-translate-y-10"
           }`}
         >

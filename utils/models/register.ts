@@ -41,6 +41,9 @@ export const MakeApprove = async (id: string) => {
   try {
     const user = await UserModel.findById(id);
     if (!user) return null;
+    if (user.is_approved) {
+      return true;
+    }
   } catch (err) {
     console.log(err);
     return null;
