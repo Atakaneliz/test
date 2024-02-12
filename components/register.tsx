@@ -62,13 +62,13 @@ export default function RegisterPage() {
       }),
     });
     const data = await res.json();
-    new Promise<void>((resolve) => {
+    console.log(data);
+    await new Promise<void>((resolve) => {
       setInterval(() => {
         setError(0);
         resolve();
       }, 3000);
     });
-    console.log(data);
     setErrMsg(data.message);
     if (!data.ok) {
       console.log("hata");
