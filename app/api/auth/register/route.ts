@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const { full_name, email, password } = await request.json();
+  //todo check fullname - email - pass length
   const check = await checkByEmail(email);
   if (check) {
     return NextResponse.json(
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
     {
       ok: true,
       message: "Register successfully!",
-      data:data
+      data: data,
     },
     { status: 200 }
   );

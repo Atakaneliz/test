@@ -38,8 +38,13 @@ export const checkByEmail = async (email: string) => {
 };
 
 export const MakeApprove = async (id: string) => {
-  const user = await UserModel.findById(id);
-  if (!user) return null;
+  try {
+    const user = await UserModel.findById(id);
+    if (!user) return null;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
   const data = await UserModel.findByIdAndUpdate(
     id,
     {
