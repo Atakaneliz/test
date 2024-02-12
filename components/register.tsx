@@ -70,7 +70,7 @@ export default function RegisterPage() {
     } else {
       console.log('hata degil')
       await handleOpenAlert(2);
-      console.log("link:" + `http://localhost:3000/${data.data._id}`);
+      console.log("link:" + `https://test-git-master-atakaneliz.vercel.app/${data.data._id}`);
     }
     setIsLoading(false);
   };
