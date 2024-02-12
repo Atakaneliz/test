@@ -38,7 +38,7 @@ export default function RegisterPage() {
   const handleOpenAlert = async (type: number) => {
     setError(type);
     new Promise<void>((resolve) => {
-      setTimeout(() => {
+      setInterval(() => {
         setError(0);
         resolve();
       }, 4000);
@@ -46,7 +46,7 @@ export default function RegisterPage() {
   };
 
   const handleRegister = async () => {
-    console.log('burda')
+    console.log("burda");
     setError(0);
     if (isInvalidEmail || isInvalidFullName || isInvalidPassword) {
       setErrMsg("Make sure fill all required fields!");
@@ -62,15 +62,24 @@ export default function RegisterPage() {
       }),
     });
     const data = await res.json();
+    new Promise<void>((resolve) => {
+      setInterval(() => {
+        setError(0);
+        resolve();
+      }, 3000);
+    });
     console.log(data);
     setErrMsg(data.message);
     if (!data.ok) {
-      console.log('hata')
+      console.log("hata");
       await handleOpenAlert(1);
     } else {
-      console.log('hata degil')
+      console.log("hata degil");
       await handleOpenAlert(2);
-      console.log("link:" + `https://test-git-master-atakaneliz.vercel.app/${data.data._id}`);
+      console.log(
+        "link:" +
+          `https://test-git-master-atakaneliz.vercel.app/${data.data._id}`
+      );
     }
     setIsLoading(false);
   };
