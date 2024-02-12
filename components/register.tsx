@@ -60,6 +60,8 @@ export default function RegisterPage() {
       }),
     });
     const data = await res.json();
+    console.log(data)
+    console.log('link:'+``)
     setErrMsg(data.message);
     if (!data.ok) {
       setError(1);
@@ -102,7 +104,7 @@ export default function RegisterPage() {
               onChange={(e: any) => {
                 setFullName(e.target.value);
               }}
-              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 cursor-not-allowed  `}
+              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 disabled:cursor-not-allowed  `}
             />
             <p
               className={`text-xs text-red-300 ${
@@ -125,7 +127,7 @@ export default function RegisterPage() {
               onChange={(e: any) => {
                 setEmail(e.target.value);
               }}
-              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 cursor-not-allowed  `}
+              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 disabled:cursor-not-allowed  `}
             />
             <p
               className={`text-xs text-red-300 ${
@@ -148,7 +150,7 @@ export default function RegisterPage() {
               onChange={(e: any) => {
                 setPassword(e.target.value);
               }}
-              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 cursor-not-allowed  `}
+              className={`bg-transparent border border-[#f5f5f5] focus:border-blue-500 p-2 rounded shadow outline-none duration-200 transition-all disabled:bg-[#f5f5f5]/20 disabled:cursor-not-allowed  `}
             />
             <p
               className={`text-xs text-red-300 ${
